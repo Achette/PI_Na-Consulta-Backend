@@ -48,7 +48,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 //                .antMatchers(PUBLIC).permitAll()
 //                .antMatchers(HttpMethod.POST, PUBLIC_USER_INSERT).permitAll()
 //                .anyRequest().authenticated();
-
+// FULL AUTHENTICATION NOT AUTHORIZED!
         http.cors().configurationSource(corsConfigurationSource());
     }
 
@@ -58,7 +58,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         String[] origins = corsOrigins.split(",");
 
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOriginPatterns(List.of("*"));
+        corsConfig.setAllowedOriginPatterns(List.of("*")); // devo permitir tudo?? ANTES ORIGINS --> *
         corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH"));
         corsConfig.setAllowCredentials(true);
         corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));

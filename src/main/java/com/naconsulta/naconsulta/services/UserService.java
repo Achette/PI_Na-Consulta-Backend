@@ -87,7 +87,7 @@ public class UserService implements UserDetailsService {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public void delete(Long id) {
         try {
-            authService.validateSelf(id);
+            authService.validateSelfOrAdmin(id);
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Id " + id + " not found");
